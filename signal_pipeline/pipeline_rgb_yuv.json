@@ -1,0 +1,47 @@
+{
+  "$schema": "../signal_pipeline/pipeline_schema.json",
+  "id": "pipeline_rgb_yuv",
+  "name": "RGB → YUV (BT.601)",
+  "description": "First stage of composite video encoding: convert linear RGB to Y′UV (luma + chroma difference). BT.601 matrix used for standard-definition NTSC and PAL.",
+  "standard": "ITU-R BT.601",
+  "stages": [
+    {
+      "id": "gamma_encode",
+      "name": "Gamma Encoding",
+      "description": "Apply gamma curve to linear-light RGB (γ ≈ 2.2 for NTSC/PAL). Produces R′G′B′.",
+      "parameters": {
+        "gamma": 2.2,
+        "black_level_ire": 7.5,
+        "white_level_ire": 100.0
+      }
+    },
+    {
+      "id": "matrix_601",
+      "name": "BT.601 Colour Matrix",
+      "description": "Encode R′G′B′ to Y′ (luma), Cb/U (blue-difference chroma), Cr/V (red-difference chroma).",
+      "matrix": {
+        "Y":  [ 0.299,   0.587,   0.114  ],
+        "U":  [-0.14713,-0.28886, 0.436  ],
+        "V":  [ 0.615,  -0.51499,-0.10001]
+      },
+      "chroma_offset": 0.5,
+      "note": "U and V are offset by 0.5 to bring them into [0,1] range for display."
+    },
+    {
+      "id": "chroma_subsample",
+      "name": "Chroma Subsampling",
+      "description": "VHS does not transmit full 4:4:4; effective chroma is approximately 4:1:1 (NTSC) or 4:2:0 (PAL).",
+      "ntsc_ratio": "4:1:1",
+      "pal_ratio": "4:2:0",
+      "horizontal_chroma_bandwidth_hz": 629000,
+      "vertical_chroma_bandwidth_hz": 300000
+    }
+  ],
+  "output": {
+    "format": "YUV",
+    "bit_depth": 8,
+    "range": "studio",
+    "y_range":  [16, 235],
+    "uv_range": [16, 240]
+  }
+}

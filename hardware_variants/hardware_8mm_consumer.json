@@ -1,0 +1,34 @@
+{
+  "id": "hardware_8mm_consumer",
+  "name": "8mm Video Consumer Camcorder",
+  "description": "Sony Video8 / Hi8 camcorder format. 8mm cassette, smaller and lighter than VHS, used heavily in home video from 1985 onward. Similar quality to VHS but different mechanical noise profile.",
+  "format": "Video8",
+  "era": "1985–2007",
+  "signal_system": "NTSC",
+  "tape_width_mm": 8.0,
+  "luma_bandwidth_mhz": 3.0,
+  "chroma_bandwidth_khz": 629,
+  "snr_luma_db": 43,
+  "horizontal_resolution_tvl": 240,
+  "dropout_rate_per_min": 4,
+  "chroma_phase_error_deg_rms": 5,
+  "tbc": false,
+  "head_drum_diameter_mm": 40,
+  "tape_speed_mm_s": 14.35,
+  "audio": "FM stereo or PCM option",
+  "shader_uniforms": {
+    "u_intensity": 0.65,
+    "u_generation": 1.0,
+    "u_temperature": 0.55,
+    "u_bleedWidth": 10,
+    "u_sharpness": 0.5
+  },
+  "aesthetic_notes": "8mm has a more intimate, home-video feel. The dropout noise clusters are slightly finer than VHS due to the smaller tape geometry. Often associated with birthday parties, holidays, family events — the dominant consumer nostalgia format.",
+  "hi8_variant": {
+    "luma_bandwidth_mhz": 5.4,
+    "horizontal_resolution_tvl": 400,
+    "snr_luma_db": 46,
+    "era": "1989–2007",
+    "yc_output": true
+  }
+}

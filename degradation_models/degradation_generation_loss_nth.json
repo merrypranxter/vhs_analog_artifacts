@@ -1,0 +1,76 @@
+{
+  "id": "degradation_generation_loss_nth",
+  "name": "Nth-Generation Duplication Loss",
+  "description": "Profiles for progressive generation loss through VHS-to-VHS dubbing. Each generation adds noise, reduces bandwidth, and desaturates colour.",
+  "type": "generation_loss",
+  "generations": [
+    {
+      "gen": 1,
+      "label": "Original recording",
+      "snr_luma_db": 43,
+      "snr_chroma_db": 38,
+      "luma_bandwidth_mhz": 3.0,
+      "chroma_bandwidth_khz": 629,
+      "saturation_relative": 0.72,
+      "noise_floor_relative": 1.0,
+      "shader_uniforms": { "u_generation": 1.0, "u_intensity": 0.7 }
+    },
+    {
+      "gen": 2,
+      "label": "First dub",
+      "snr_luma_db": 39,
+      "snr_chroma_db": 34,
+      "luma_bandwidth_mhz": 2.8,
+      "chroma_bandwidth_khz": 550,
+      "saturation_relative": 0.64,
+      "noise_floor_relative": 1.5,
+      "shader_uniforms": { "u_generation": 2.0, "u_intensity": 0.75 }
+    },
+    {
+      "gen": 3,
+      "label": "Second dub",
+      "snr_luma_db": 35,
+      "snr_chroma_db": 30,
+      "luma_bandwidth_mhz": 2.5,
+      "chroma_bandwidth_khz": 480,
+      "saturation_relative": 0.55,
+      "noise_floor_relative": 2.2,
+      "shader_uniforms": { "u_generation": 3.0, "u_intensity": 0.8 }
+    },
+    {
+      "gen": 4,
+      "label": "Third dub — marginal quality",
+      "snr_luma_db": 31,
+      "snr_chroma_db": 26,
+      "luma_bandwidth_mhz": 2.2,
+      "chroma_bandwidth_khz": 400,
+      "saturation_relative": 0.45,
+      "noise_floor_relative": 3.1,
+      "shader_uniforms": { "u_generation": 4.0, "u_intensity": 0.85 }
+    },
+    {
+      "gen": 5,
+      "label": "Fourth dub — barely watchable",
+      "snr_luma_db": 27,
+      "snr_chroma_db": 22,
+      "luma_bandwidth_mhz": 1.8,
+      "chroma_bandwidth_khz": 320,
+      "saturation_relative": 0.34,
+      "noise_floor_relative": 4.4,
+      "shader_uniforms": { "u_generation": 5.0, "u_intensity": 0.9 }
+    },
+    {
+      "gen": 8,
+      "label": "Seventh dub — archival ruin",
+      "snr_luma_db": 18,
+      "snr_chroma_db": 14,
+      "luma_bandwidth_mhz": 1.2,
+      "chroma_bandwidth_khz": 200,
+      "saturation_relative": 0.18,
+      "noise_floor_relative": 8.0,
+      "shader_uniforms": { "u_generation": 8.0, "u_intensity": 1.0 }
+    }
+  ],
+  "reference_shader": "_generation_loss_vhs_nth.frag",
+  "notes": "Consumer VHS is considered unusable beyond generation 4–5. S-VHS extends this to 7–8. Each generation adds approximately 3.5 dB SNR loss and 8° chroma phase error."
+}

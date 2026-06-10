@@ -1,0 +1,36 @@
+{
+  "id": "hardware_betamax_consumer",
+  "name": "Betamax Consumer Deck",
+  "description": "Sony Betamax (Beta) at Beta I (SP) speed. Higher luma bandwidth than VHS, slightly different noise texture. Lost the format war despite technical advantages.",
+  "format": "Betamax",
+  "speed": "Beta-I (SP)",
+  "era": "1975–2002",
+  "signal_system": "NTSC",
+  "luma_bandwidth_mhz": 3.5,
+  "chroma_bandwidth_khz": 688,
+  "snr_luma_db": 45,
+  "snr_chroma_db": 40,
+  "horizontal_resolution_tvl": 280,
+  "dropout_rate_per_min": 2,
+  "chroma_phase_error_deg_rms": 4,
+  "tbc": false,
+  "tape_width_mm": 12.7,
+  "tape_speed_mm_s": 18.73,
+  "head_drum_diameter_mm": 74.5,
+  "aperture_correction_db": 5,
+  "saturation_relative": 0.78,
+  "black_level_lift_ire": 7.5,
+  "shader_uniforms": {
+    "u_intensity": 0.5,
+    "u_generation": 1.0,
+    "u_temperature": 0.5,
+    "u_bleedWidth": 8,
+    "u_sharpness": 0.45
+  },
+  "aesthetic_notes": "Betamax noise has a slightly crisper, less warm character than VHS. The tracking noise bands tend to be narrower. The colour is marginally more accurate owing to wider chroma bandwidth.",
+  "recommended_shaders": [
+    "_chrominance_noise_ntsc_composite.frag",
+    "_dropout_vhs_ntsc.frag",
+    "_luma_blooming_vhs_ntsc.frag"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "degradation_tape_wear_light",
+  "name": "Light Tape Wear",
+  "description": "Tape wear from normal use — 20–50 plays. Minor creases at leader, slight oxide migration at common pause points.",
+  "type": "tape_wear",
+  "severity": "light",
+  "parameters": {
+    "crease_count": 1,
+    "crease_width_lines_range": [1, 3],
+    "oxide_band_count": 0,
+    "flutter_amplitude_percent": 0.2,
+    "wow_amplitude_percent": 0.5,
+    "edge_damage": false,
+    "curvature_deformation": "minimal"
+  },
+  "shader_uniforms": {
+    "u_intensity": 0.25
+  },
+  "visual_description": "Nearly clean. One faint crease line. Very slight horizontal breathing.",
+  "reference_shader": "_tape_wear_vhs_physical.frag"
+}

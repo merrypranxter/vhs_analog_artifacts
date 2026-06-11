@@ -1,0 +1,69 @@
+{
+  "id": "pipeline_rf_vhs",
+  "name": "RF → VHS Tape Recording and Playback",
+  "description": "Final stage: write the FM-encoded signal to magnetic tape via helical scan, and read it back. This is where the characteristic VHS degradations originate.",
+  "record": {
+    "head_drum": {
+      "diameter_mm": 62,
+      "rpm": 1800,
+      "heads": 2,
+      "head_gap_um": 0.3,
+      "track_angle_deg": 5.96,
+      "track_pitch_um_sp": 58,
+      "track_pitch_um_ep": 19
+    },
+    "tape": {
+      "width_mm": 12.65,
+      "oxide": "gamma-Fe2O3",
+      "coercivity_oe_sp": 650,
+      "remanence_gauss": 1200,
+      "thickness_um": 20,
+      "base_material": "PET polyester"
+    },
+    "luma_channel": {
+      "recording_method": "FM",
+      "sync_tip_mhz": 3.4,
+      "peak_white_mhz": 4.4,
+      "bandwidth_mhz": 3.0,
+      "snr_db_sp": 43
+    },
+    "chroma_channel": {
+      "recording_method": "FM down-converted",
+      "carrier_hz": 629380,
+      "bandwidth_hz": 400000,
+      "snr_db": 38,
+      "phase_stability_deg_rms": 5
+    }
+  },
+  "playback": {
+    "replay_amplifier": {
+      "frequency_response_mhz": [0.05, 5.0],
+      "aperture_correction_db": 6,
+      "noise_figure_db": 8
+    },
+    "dropout_compensator": {
+      "enabled": true,
+      "method": "previous line repeat",
+      "max_duration_us": 5
+    },
+    "tbc": {
+      "consumer_vhs": false,
+      "s_vhs": "optional",
+      "professional": true,
+      "jitter_without_tbc_ns": 300
+    },
+    "degradations_per_generation": {
+      "snr_loss_db": 3.5,
+      "chroma_phase_error_deg": 8,
+      "luma_bandwidth_loss_khz": 200,
+      "dropout_rate_increase_percent": 15
+    }
+  },
+  "formats": {
+    "VHS_SP":  { "tape_speed_mm_s": 23.39, "play_time_min": 120, "luma_bandwidth_mhz": 3.0 },
+    "VHS_LP":  { "tape_speed_mm_s": 11.70, "play_time_min": 240, "luma_bandwidth_mhz": 2.4 },
+    "VHS_EP":  { "tape_speed_mm_s": 7.80,  "play_time_min": 360, "luma_bandwidth_mhz": 2.1 },
+    "SVHS_SP": { "tape_speed_mm_s": 23.39, "play_time_min": 120, "luma_bandwidth_mhz": 5.4,
+                 "separate_yc": true }
+  }
+}

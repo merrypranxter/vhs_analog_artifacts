@@ -1,0 +1,49 @@
+{
+  "id": "pipeline_composite_rf",
+  "name": "Composite → RF (VHF/UHF modulation)",
+  "description": "Third stage: FM-modulate the composite baseband signal onto a VHF or UHF carrier for antenna transmission or cable distribution. Also covers VHS's internal RF down-conversion for the chroma channel.",
+  "stages": [
+    {
+      "id": "fm_modulate_video",
+      "name": "FM Video Modulation",
+      "description": "Frequency-modulate the composite signal onto the video carrier. Sync tip = carrier rest frequency; peak white = peak deviation.",
+      "ntsc": {
+        "channel_3_carrier_mhz": 61.25,
+        "channel_4_carrier_mhz": 67.25,
+        "video_carrier_offset_mhz": 1.25,
+        "audio_carrier_offset_mhz": 5.75,
+        "deviation_mhz_sync": 0,
+        "deviation_mhz_peak_white": 0.5
+      },
+      "pal": {
+        "channel_example_mhz": 175.25,
+        "deviation_mhz": 0.5,
+        "audio_carrier_offset_mhz": 6.0
+      }
+    },
+    {
+      "id": "vhs_chroma_downconvert",
+      "name": "VHS Chroma Down-Conversion",
+      "description": "VHS cannot record the 3.58 MHz chroma subcarrier at full speed — its luma FM system occupies most of the bandwidth. Instead, chroma is down-converted to a low-bandwidth FM carrier at ~629 kHz before recording.",
+      "input_chroma_carrier_hz": 3579545,
+      "output_chroma_carrier_hz": 629380,
+      "method": "heterodyne",
+      "bandwidth_hz": 400000,
+      "note": "This is the primary cause of VHS colour degradation. The down-converted carrier is FM-modulated with the chroma information at reduced bandwidth."
+    },
+    {
+      "id": "rf_noise_floor",
+      "name": "RF Noise Floor",
+      "description": "Thermal noise from the tuner adds ~12–18 dB SNR degradation at the antenna input.",
+      "snr_tuner_db": 45,
+      "snr_cable_db": 52,
+      "interference_sources": [
+        "adjacent channel bleed",
+        "co-channel interference",
+        "multipath reflection",
+        "power line hum (60/50 Hz)",
+        "impulse noise (switching supplies)"
+      ]
+    }
+  ]
+}

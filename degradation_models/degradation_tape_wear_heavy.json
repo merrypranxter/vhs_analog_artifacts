@@ -1,0 +1,24 @@
+{
+  "id": "degradation_tape_wear_heavy",
+  "name": "Heavy Tape Wear",
+  "description": "Heavily worn tape — 200+ plays, stored in poor conditions (heat, humidity). Multiple creases, oxide shedding bands, significant deformation. The tape remembers too much.",
+  "type": "tape_wear",
+  "severity": "heavy",
+  "parameters": {
+    "crease_count": 4,
+    "crease_width_lines_range": [3, 12],
+    "oxide_band_count": 2,
+    "oxide_band_width_percent_frame": 8,
+    "flutter_amplitude_percent": 1.2,
+    "wow_amplitude_percent": 2.5,
+    "edge_damage": true,
+    "curvature_deformation": "significant",
+    "cinching": "present",
+    "sticky_shed_syndrome": false
+  },
+  "shader_uniforms": {
+    "u_intensity": 0.85
+  },
+  "visual_description": "Multiple horizontal noise bands. Image breathes and warps. Creases produce bright horizontal scars. The tape is telling its own story.",
+  "reference_shader": "_tape_wear_vhs_physical.frag"
+}

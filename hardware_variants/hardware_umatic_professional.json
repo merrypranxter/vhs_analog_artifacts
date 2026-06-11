@@ -1,0 +1,38 @@
+{
+  "id": "hardware_umatic_professional",
+  "name": "U-matic Professional Deck (Low Band)",
+  "description": "Sony U-matic (3/4 inch) Low Band — the first cassette format used in professional broadcast. Heavy, expensive, but far superior to consumer VHS. Used in ENG (electronic news gathering) through the 1980s.",
+  "format": "U-matic",
+  "variant": "Low Band",
+  "era": "1971–1995",
+  "signal_system": "NTSC",
+  "tape_width_mm": 19.05,
+  "luma_bandwidth_mhz": 2.5,
+  "chroma_bandwidth_khz": 688,
+  "snr_luma_db": 45,
+  "snr_chroma_db": 41,
+  "horizontal_resolution_tvl": 260,
+  "dropout_rate_per_min": 1,
+  "chroma_phase_error_deg_rms": 6,
+  "tbc": "standard",
+  "head_drum_diameter_mm": 110,
+  "tape_speed_mm_s": 95.25,
+  "aperture_correction_db": 7,
+  "saturation_relative": 0.80,
+  "shader_uniforms": {
+    "u_intensity": 0.55,
+    "u_generation": 1.0,
+    "u_temperature": 0.5,
+    "u_bleedWidth": 14,
+    "u_sharpness": 0.55
+  },
+  "aesthetic_notes": "U-matic Low Band has characteristic severe chroma noise — a coarse, grainy colour quality distinctive of 1970s–80s news footage. The large tape format creates different mechanical noise than VHS. Very characteristic 'documentary look.'",
+  "variants": {
+    "high_band": {
+      "luma_bandwidth_mhz": 3.5,
+      "horizontal_resolution_tvl": 340,
+      "snr_luma_db": 47,
+      "era": "1974–1998"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "hardware_svhs_prosumer",
+  "name": "S-VHS Prosumer Deck",
+  "description": "Super-VHS (S-VHS) deck. Separate Y/C output bypasses composite re-encoding, dramatically improving chroma quality. Used by prosumers and semi-professional production in the 1990s.",
+  "format": "S-VHS",
+  "speed": "SP",
+  "era": "1988–2002",
+  "signal_system": "NTSC",
+  "luma_bandwidth_mhz": 5.4,
+  "chroma_bandwidth_khz": 629,
+  "snr_luma_db": 46,
+  "snr_chroma_db": 42,
+  "horizontal_resolution_tvl": 400,
+  "dropout_rate_per_min": 1,
+  "chroma_phase_error_deg_rms": 2,
+  "tbc": "optional",
+  "yc_separation": true,
+  "aperture_correction_db": 4,
+  "saturation_relative": 0.88,
+  "black_level_lift_ire": 7.5,
+  "shader_uniforms": {
+    "u_intensity": 0.35,
+    "u_generation": 1.0,
+    "u_temperature": 0.5,
+    "u_bleedWidth": 4,
+    "u_sharpness": 0.3
+  },
+  "recommended_shaders": [
+    "_luma_blooming_vhs_ntsc.frag",
+    "_dot_crawl_ntsc_composite.frag",
+    "_generation_loss_vhs_nth.frag"
+  ],
+  "notes": "S-VHS tapes require higher-coercivity oxide (900 Oe vs 650 Oe for standard VHS). Playing S-VHS tapes on a standard VHS deck produces severe dropout due to mismatched bias."
+}

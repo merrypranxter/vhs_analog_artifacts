@@ -1,0 +1,24 @@
+{
+  "id": "degradation_dropout_severe",
+  "name": "Severe Tape Dropout",
+  "description": "Dropout profile for a neglected or very old tape. Multiple band dropouts per minute, frequent streaks, white noise blizzards. The tape is failing.",
+  "type": "dropout",
+  "severity": "severe",
+  "parameters": {
+    "point_dropout_rate_per_frame": 60,
+    "streak_dropout_rate_per_frame": 8,
+    "band_dropout_rate_per_minute": 4,
+    "max_streak_width_pixels": 80,
+    "max_band_height_lines": 24,
+    "cluster_probability": 0.7,
+    "cluster_size_range_px": [8, 40],
+    "luminance_value": 1.0,
+    "temporal_correlation_frames": 4,
+    "oxide_shedding": true
+  },
+  "shader_uniforms": {
+    "u_intensity": 0.92
+  },
+  "visual_description": "Dense white noise bursts, large bands of static, tape barely playable. Last days of a tape.",
+  "reference_shader": "_dropout_vhs_ntsc.frag"
+}

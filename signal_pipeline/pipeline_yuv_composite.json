@@ -1,0 +1,50 @@
+{
+  "id": "pipeline_yuv_composite",
+  "name": "YUV → Composite (NTSC/PAL)",
+  "description": "Second stage: modulate chroma onto subcarrier and add to luma to produce the composite baseband signal.",
+  "stages": [
+    {
+      "id": "burst_reference",
+      "name": "Colour Burst Reference",
+      "description": "8–10 cycle burst of the subcarrier inserted during horizontal blanking. Provides phase reference for decoder.",
+      "ntsc_burst_phase_deg": 180,
+      "pal_burst_phase_deg": 135,
+      "burst_cycles": 9
+    },
+    {
+      "id": "chroma_modulate_ntsc",
+      "name": "NTSC Chroma Modulation",
+      "description": "Modulate U/V onto 3.579545 MHz quadrature subcarrier.",
+      "subcarrier_hz": 3579545,
+      "line_period_us": 63.556,
+      "phase_per_line_deg": 0,
+      "encoding": "QAM",
+      "i_bandwidth_hz": 1300000,
+      "q_bandwidth_hz":  400000
+    },
+    {
+      "id": "chroma_modulate_pal",
+      "name": "PAL Chroma Modulation",
+      "description": "Modulate U/V onto 4.433618 MHz subcarrier with V-axis phase inversion on alternate lines.",
+      "subcarrier_hz": 4433618,
+      "line_period_us": 64.0,
+      "phase_per_line_deg": 90,
+      "v_phase_alternation": true,
+      "encoding": "QAM",
+      "uv_bandwidth_hz": 1300000
+    },
+    {
+      "id": "composite_add",
+      "name": "Composite Signal Summation",
+      "description": "Add luma (Y), modulated chroma (C), sync pulses, and burst to form the composite signal: E = Y + C.",
+      "signal_levels_ire": {
+        "sync_tip":    -40,
+        "blanking":      0,
+        "black":         7.5,
+        "peak_white":  100,
+        "peak_chroma":  20
+      },
+      "total_bandwidth_hz": 4200000
+    }
+  ]
+}

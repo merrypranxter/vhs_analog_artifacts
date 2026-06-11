@@ -1,0 +1,23 @@
+{
+  "id": "degradation_dropout_moderate",
+  "name": "Moderate Tape Dropout",
+  "description": "Dropout profile for a tape that has been played 50–100 times. Visible but not distracting — the expected condition of a well-used tape.",
+  "type": "dropout",
+  "severity": "moderate",
+  "parameters": {
+    "point_dropout_rate_per_frame": 12,
+    "streak_dropout_rate_per_frame": 2,
+    "band_dropout_rate_per_minute": 0.5,
+    "max_streak_width_pixels": 25,
+    "max_band_height_lines": 6,
+    "cluster_probability": 0.3,
+    "cluster_size_range_px": [3, 12],
+    "luminance_value": 1.0,
+    "temporal_correlation_frames": 2
+  },
+  "shader_uniforms": {
+    "u_intensity": 0.5
+  },
+  "visual_description": "Occasional white spikes, rare short streaks. A tape that has been used but cared for.",
+  "reference_shader": "_dropout_vhs_ntsc.frag"
+}
